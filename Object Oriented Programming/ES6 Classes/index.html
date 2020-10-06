@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //ES6 Classes
+
+      //Classes are essentially constructor functions
+      class Circle {
+        constructor(radius) {
+          this.radius = radius;
+          //This Method will show up in the object
+          this.move = function () {};
+        }
+
+        //Instance Method
+        //This method will show up in the object prototype
+        draw() {
+          console.log("draw");
+        }
+
+        //Static Method
+        //not avalable as instance.method ... only Class.method
+        //these are intended as utility functions that are not tied to a particular object.
+        static parse(str) {
+          const radius = JSON.parse(str).radius;
+          return new Circle(radius);
+        }
+      }
+
+      const c = new Circle(1);
+
+      //Hoisting
+
+      //Function Declaration
+      function sayHello() {} //Convention is to not add a semicolon
+      //function declations are hoisted to the top of the code.
+
+      //Function Expression
+      const sayBye = function () {}; //Convention is to end with a semicolon.
+      //not hoiseted. If sayBye were called before this exreassion, there would be a ReferenceError.
+
+      //Class Declaration
+      class Cube {}
+      //not hoisted
+
+      //Class Expression
+      const Sphere = class {};
+      //pretty much noone uses this. There isn't a use case for it.
+
+      //The "this" keyword
+      const Elipse = function () {
+        this.yell = function () {
+          console.log(this);
+        };
+      };
+
+      const e = new Elipse();
+
+      //Method Call
+      e.yell();
+
+      const yell = e.yell;
+
+      //Function Call
+      yell();
+      //"this" will point to the global object
+      //'use strict' will prevent "this" pointing to the global object and will thereby set "this" to undefined. This prevents us from modifying the global object.
+
+      //By default, the body of classes are executed in strict mode, so if Elipse were declared as a class, draw would return undefined.
+
+      //In a private method of a Class, if you want to access the parent class as 'this', you must use an arrow function instead of a regular function, as arrow functions maintain the parent as 'this' rather than the new 'this' referring to the regular function as an object.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Includes</h1>
+    <script>
+      function includes(array, searchedElement) {
+        for (element of array) {
+          if (searchedElement === element) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      console.log(includes([1, 2, "a", true, false], false));
+    </script>
+  </body>
+</html>

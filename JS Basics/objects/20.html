@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function PriceRange(dollarSign) {
+        (this.$ = dollarSign),
+          (this.setPrice = function (dollarSign) {
+            switch (dollarSign) {
+              case "$":
+                return "cheap";
+                break;
+              case "$$":
+                return "moderate";
+                break;
+              case "$$$":
+                return "pricey";
+                break;
+              default:
+                return "no info";
+            }
+          }),
+          (this.priciness = this.setPrice(dollarSign));
+      }
+
+      let cheap = new PriceRange("$");
+      let moderate = new PriceRange("$$");
+      let pricey = new PriceRange("$$$");
+      console.log(cheap, moderate, pricey);
+    </script>
+  </body>
+</html>

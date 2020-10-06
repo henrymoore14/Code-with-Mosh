@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Detect truthy or falsy values from an array
+      console.time("sum 1");
+      console.log(sum(30));
+      console.timeEnd("sum 1");
+
+      console.time("sum 2");
+      console.log(sum2(30));
+      console.timeEnd("sum 2");
+
+      console.time("sum 3");
+      console.log(sum3(30));
+      console.timeEnd("sum 3");
+
+      //First Idea
+      function sum(limit) {
+        let total = 0;
+        let i = 1;
+        let fiveMultiple = 5;
+        let threeMultiple = 3;
+        while (fiveMultiple <= limit && threeMultiple <= limit) {
+          if (fiveMultiple <= limit) {
+            total += fiveMultiple;
+          }
+          if (threeMultiple <= limit) {
+            total += threeMultiple;
+          }
+          i++;
+          fiveMultiple = 5 * i;
+          threeMultiple = 3 * i;
+        }
+        return total;
+      }
+
+      //Mosh's Idea
+      function sum2(limit) {
+        let sum = 0;
+        for (let i = 0; i <= limit; i++) {
+          if (i % 3 === 0 || i % 5 === 0) {
+            sum += i;
+            console.log(i);
+          }
+        }
+        return sum;
+      }
+
+      //My second idea is the fastest
+      function sum3(limit) {
+        let total = 0;
+        let i = 1;
+        let fiveMultiple = 5;
+        let threeMultiple = 3;
+        while (fiveMultiple <= limit) {
+          fiveMultiple = 5 * i;
+          if (fiveMultiple <= limit) {
+            total += fiveMultiple;
+          }
+          i++;
+
+          console.log(fiveMultiple);
+        }
+        i = 1;
+        while (threeMultiple <= limit) {
+          threeMultiple = 3 * i;
+          if (threeMultiple <= limit) {
+            total += threeMultiple;
+          }
+          i++;
+
+          console.log(threeMultiple);
+        }
+        return total;
+      }
+    </script>
+  </body>
+</html>

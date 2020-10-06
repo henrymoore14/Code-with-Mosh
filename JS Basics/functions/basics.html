@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const person = {
+        firstName: "Henry",
+        lastName: "Moore",
+        get fullName() {
+          return `${firstName} ${lastName}`;
+        },
+        set fullName(value) {
+          if (typeof value !== "string") {
+            //Throwing and Exception ()
+            throw new Error("Value is not a string.");
+          }
+
+          const parts = value.split(" ");
+          if (parts.length !== 2) {
+            throw new Error("Enter a first and last name");
+          }
+          this.firstName = parts[0];
+          this.lastName = parts[1];
+        },
+      };
+
+      try {
+        person.fullName = "John Smith";
+      } catch (error) {
+        alert(error);
+      }
+      console.log(person);
+
+      //local variables take precident over global variables. So if you create a new variable with the same name, the local variable will be the one that's used.
+      //var is not limited to the block that it is defined, but it's limited to the function it is defined
+      //var creates function-scoped variables.
+      //let creates block-scoped funtions.
+      //var is also added to the window object
+      //so are functions
+      //this references the object that is executing the current function
+
+      //in a global function, the this keyword will reference the window object in browser, or global in Node.JS
+      //When calling a conructor function, this will reference the new object, not the global object.
+
+      //this in callback functions will reference the global object.
+
+      //This
+      const video = {
+        title: "a",
+        tags: ["a", "b", "c"],
+        showTags() {
+          this.tags.forEach((tag) => {
+            console.log(this.title, tag);
+          }, this);
+        },
+      };
+      //   video.showTags();
+
+      //Changing This
+      const player = {
+        title: "a",
+        tags: ["a", "b", "c"],
+        showTags() {
+          //   const self = this;
+          this.tags.forEach(
+            function (tag) {
+              console.log(this.title, tag);
+            }.bind(this)
+          );
+        },
+      };
+      //arrow functions inhearent this from the containing function.
+
+      //   player.showTags();
+
+      function playVideo(a, b) {
+        console.log(this);
+      }
+
+      playVideo.call({ name: "Henry" }, 1, 2);
+      playVideo.apply({ name: "Henry" }, [1, 2]);
+      //bind method returns a function that is permanently set to point to the object set in the parameter
+      playVideo.bind({ name: "Henry" })();
+
+      playVideo();
+    </script>
+  </body>
+</html>

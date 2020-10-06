@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Circle(radius) {
+        (this.radius = radius),
+          Object.defineProperties(this, {
+            setRadius: {
+              set(value) {
+                this.radius = value;
+              },
+            },
+            area: {
+              get() {
+                return Math.PI * Math.pow(this.radius, 2);
+              },
+            },
+          });
+      }
+
+      circle = new Circle(5);
+      circle.setRadius = 2;
+      console.log(circle.area);
+      // console.log(circle.area);
+      circle.setRadius = 5;
+      console.log(circle.area);
+    </script>
+  </body>
+</html>

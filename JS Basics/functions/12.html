@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sum(...args) {
+        if (args.length === 0 || args[0].length === 0) {
+          throw new Error("This is not a valid input");
+        }
+        if (args.length === 1 && Array.isArray(args[0])) {
+          args = [...args[0]];
+        }
+        return args.reduce((a, b) => {
+          return a + b;
+        });
+      }
+
+      function sum2(a, ...args) {
+        Array.isArray(a) ? (args = [...a, ...args]) : (args = [a, ...args]);
+        if (args.length === 0) {
+          throw new Error("This is not a valid input");
+        }
+        return args.reduce((a, b) => {
+          return a + b;
+        });
+      }
+
+      try {
+        console.log(sum2([1, 2, 3], 3, 4, 6));
+      } catch (e) {
+        console.log(e);
+      }
+    </script>
+  </body>
+</html>

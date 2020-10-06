@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const circle = {
+        radius: 1,
+        location: {
+          x: 1,
+          y: 1,
+        },
+        isVisible: true,
+        draw: function (word) {
+          console.log(word);
+        },
+      };
+
+      //Factory Function (Camel notation)
+      function createCircle(radius) {
+        return {
+          radius, //radius: radius
+          location: location,
+          isVisible: true,
+          draw(word) {
+            console.log(word);
+          },
+        };
+      }
+
+      circle1 = createCircle(1);
+      circle1.draw("this is");
+
+      delete circle1.location;
+
+      console.log(circle1);
+
+      //Constructor Functions (Pascal Notation)
+      function Circle(radius) {
+        this.radius = radius;
+        this.draw = function (word) {
+          console.log(word);
+        };
+      }
+
+      const circle2 = new Circle(1);
+      //Console log the constructor of an object
+      console.log(circle2.constructor);
+      circle2.draw("word");
+
+      Circle.call({}, 1);
+    </script>
+  </body>
+</html>

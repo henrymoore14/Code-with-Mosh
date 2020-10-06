@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const first = [1, 2, 3];
+      const second = [4, 5, 6];
+
+      const combined = first.concat(second);
+      //Concat only returns a copy of the array
+      console.log(combined);
+
+      const copy = combined.splice();
+
+      const combined2 = [...first, "a", ...second, "b"];
+      console.log(combined2);
+
+      const copy2 = [...combined2];
+      console.log(copy2);
+
+      for (let element of combined) console.log(element);
+      combined.forEach((element, index) => {
+        console.log(element, index);
+      });
+
+      const sorted = ["a", "bz", 1, 3, 5, "x"];
+
+      sorted.sort();
+      //numbers before strings
+      console.log(sorted);
+
+      const objects = [{ name: "Adam" }, { name: "Lucas" }, { name: "Bob" }];
+
+      objects.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+      });
+      console.log(objects);
+
+      const allPositive = first.every((value) => {
+        return value >= 0;
+      });
+
+      const atLeastOneNegative = first.some((value) => {
+        return value <= 0;
+      });
+
+      console.log(allPositive, atLeastOneNegative);
+
+      const filteredArray = first.filter((value) => value >= 2);
+
+      console.log(filteredArray);
+
+      const mappedArray = filteredArray.map((value) => {
+        return `<li>${value}</li>`;
+      });
+
+      const mappedString = "<ul>" + mappedArray.join("") + "<ul>";
+
+      console.log(mappedArray);
+      console.log(mappedString);
+
+      const mappedObjects = filteredArray.map((value) => ({ value: value }));
+      console.log(mappedObjects);
+
+      //these methods are chainable ex: .filter().map()
+    </script>
+  </body>
+</html>

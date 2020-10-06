@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function HtmlElement() {
+        this.click = function () {
+          return console.log("clicked");
+        };
+      }
+
+      HtmlElement.prototype.focus = function () {
+        console.log("focussed");
+      };
+
+      const e = new HtmlElement();
+
+      function HtmlSelectElement(...items) {
+        this.addItem = function (element) {
+          items.push(element);
+        };
+        this.items = items;
+        this.removeItem = function () {
+          items.pop();
+        };
+        this.render = function () {
+          return (
+            `<select>\n` +
+            // this.items.reduce((wrapper, text) => {
+            //   return wrapper + `\t<option>${text}</option>\n`;
+            // }, "")
+            //Poor Implimentation ^^
+
+            this.items.map((n) => `\t<option>${n}</option>\n`).join("") +
+            `</select>`
+          );
+        };
+      }
+
+      HtmlSelectElement.prototype = new HtmlElement();
+      HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+      function HtmlImageElement(src) {
+        this.src = src;
+        this.render = function () {
+          return `<img src="${this.src}" />`;
+        };
+      }
+
+      HtmlImageElement.prototype = new HtmlElement();
+      HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+      // const canRender = {
+      //   render: function () {},
+      // };
+
+      // Object.assign(HtmlImageElement, canRender);
+      // Object.assign(HtmlSelectElement, canRender);
+
+      console.log(e);
+
+      const s = new HtmlSelectElement(1, 2, 3);
+      s.addItem(4);
+      s.addItem(5);
+      s.removeItem();
+      console.log(s);
+      console.log(s.render());
+
+      const i = new HtmlImageElement("http://");
+      console.log(i.render());
+
+      const elements = [s, i];
+      for (let element of elements) {
+        console.log(element.render());
+      }
+    </script>
+  </body>
+</html>

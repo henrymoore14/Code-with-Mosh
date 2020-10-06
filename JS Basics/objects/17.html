@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function ConstructorCreateAddress(street, city, zipCode) {
+        (this.street = street), (this.city = city), (this.zipCode = zipCode);
+      }
+
+      let address1 = new ConstructorCreateAddress("a", "b", 323);
+      let address2 = new ConstructorCreateAddress("a", "b", 123);
+
+      let address3 = address2;
+
+      function areEqual(address1, address2) {
+        let value = true;
+        for (let key in address1) {
+          if (key in address2) {
+            if (address1[key] === address2[key]) {
+              continue;
+            } else {
+              value = false;
+              break;
+            }
+          } else {
+            value = false;
+            break;
+          }
+        }
+        console.log(value);
+      }
+
+      function areSame(address1, address2) {
+        console.log(address2 == address1);
+      }
+
+      areEqual(address1, address2);
+      areSame(address2, address3);
+
+      console.log(address1, address2);
+    </script>
+  </body>
+</html>

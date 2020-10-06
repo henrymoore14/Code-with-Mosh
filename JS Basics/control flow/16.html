@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //log all obj key values that are strings
+
+      const movie = {
+        title: "a",
+        releaseYear: 2018,
+        rating: 4.5,
+        director: "b"
+      };
+
+      showProperties(movie);
+
+      function showProperties(obj) {
+        for (let key in obj)
+          if (typeof obj[key] == "string") console.log(key, obj[key]);
+      }
+    </script>
+  </body>
+</html>

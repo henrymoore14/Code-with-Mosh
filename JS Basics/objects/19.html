@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function BlogDraft(title, body, author) {
+        (this.title = title),
+          (this.body = body),
+          (this.author = author),
+          (this.views = 0),
+          (this.comments = []),
+          (isLive = false);
+      }
+      let blogPost = new BlogDraft("a", "b", "c");
+
+      console.log(blogPost);
+    </script>
+  </body>
+</html>

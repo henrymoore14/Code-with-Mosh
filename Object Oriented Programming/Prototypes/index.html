@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Object Prototypes
+      //Every object comes from the object prototype. The Object prototype hosts a variety of properties and methods that you can access from a child object without explicitly defining it in the child object.
+
+      //Multilevel Inhearatence
+      //Example: Arrays
+      //myArray <- arrayProto <- objectProto
+
+      //Constructor Prototypes
+      //myObject.getPrototypOf()  ===  myObject.__proto__  === Object.prototype
+      //Object.prototype is the prototype of the object that will be created by the Object constructor function
+
+      //Instance members vs Prototype Members
+      //Instance members are the members of whatever object you are working with. If there are members with the same name in the Instance object and the prototype object, then
+      //this.member can access members going up or down instances of an object
+
+      //Iterating Instances and Prototype Members
+      //Object.keys() iterarates through instance members
+      //for(let key in object) iterates through all members (instance/own and prototype)
+
+      //Don;t modify objects that you don't own
+    </script>
+    <script src="stopwatch.js"></script>
+  </body>
+</html>

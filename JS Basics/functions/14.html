@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const items = [1, 2, 3, 4, 3];
+
+      // console.log(occurences(items, 2));
+
+      // function occurences(array, match) {
+      //   try {
+      //     return array.reduce((accumulator, currentValue) => {
+      //       const occurence = currentValue === match ? 1 : 0;
+      //       return accumulator + occurence;
+      //     }, 0);
+      //   } catch {
+      //     console.log("No array inputted");
+      //   }
+      // }
+
+      const items = [1, 2, 3, 4, 3];
+      try {
+        console.log(occurences("y", 2));
+      } catch (e) {
+        console.log(e.message);
+      }
+
+      function occurences(array, match) {
+        if (!Array.isArray(array)) {
+          throw new Error("There was no array inputted.");
+        }
+        return array.reduce((accumulator, currentValue) => {
+          const occurence = currentValue === match ? 1 : 0;
+          return accumulator + occurence;
+        }, 0);
+      }
+    </script>
+  </body>
+</html>

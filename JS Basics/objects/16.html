@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function factoryCreateAddress(street, city, zipCode) {
+        return {
+          street,
+          city,
+          zipCode,
+        };
+      }
+
+      function ConstructorCreateAddress(street, city, zipCode) {
+        (this.street = street), (this.city = city), (this.zipCode = zipCode);
+      }
+
+      let address1 = factoryCreateAddress("a", "b", 123);
+      let address2 = new ConstructorCreateAddress("a", "b", 123);
+
+      console.log(address1, address2);
+    </script>
+  </body>
+</html>

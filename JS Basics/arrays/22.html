@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Max</h1>
+    <script>
+      const movies = [
+        { title: "Yoyo", rating: 5, year: 2019 },
+        { title: "The Witcher", rating: 4.5, year: 2019 },
+        { title: "Hah Hah", rating: 2.5, year: 2017 },
+        { title: "Hello Kitty", rating: 5, year: 2018 },
+        { title: "Some Cool Movie", rating: 4.7, year: 2019 },
+      ];
+
+      //LOL my code is so ugly
+      function movieSorting(moviesArray, year, rating) {
+        const result = [];
+        for (let i of moviesArray) {
+          if (year === i.year) result.push(i);
+        }
+        result.sort((a, b) => {
+          if (a.rating > b.rating) return -1;
+          if (a.rating < b.rating) return 1;
+          return 0;
+        });
+        const titles = [];
+        for (let i of result) titles.push(i.title);
+        return titles;
+      }
+
+      console.log(movieSorting(movies, 2019, 4));
+
+      //Mosh's solution
+      function moshMovieSorting(moviesArray, rating, year) {
+        const titles = moviesArray
+          .filter((movie) => movie.year === year && movie.rating > rating)
+          .sort((a, b) => a.rating - b.rating)
+          .reverse()
+          .map((m) => m.title);
+
+        return titles;
+      }
+      console.log(moshMovieSorting(movies, 4, 2019));
+    </script>
+  </body>
+</html>

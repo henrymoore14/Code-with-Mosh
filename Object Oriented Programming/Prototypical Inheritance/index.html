@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Shape(color, orientation) {
+        this.color = color;
+        this.orientation = orientation;
+      }
+
+      Shape.prototype.duplicate = function () {
+        console.log("duplicate");
+      };
+
+      function Circle(radius, color) {
+        Shape.call(this, color);
+        this.radius = radius;
+      }
+
+      //   Circle.prototype = Object.create(Shape.prototype);
+      //   //Wheneber you reset the prototype of an object, revert the constructor function back. In this case, without the reset, the constructor function would be returning an Circle Object.
+      //   Circle.prototype.constructor = Circle;
+
+      // Square.prototype = Object.create(Shape.prototype);
+      //   Square.prototype.constructor = Square;
+
+      Circle.prototype.draw = function () {
+        console.log("draw");
+      };
+
+      const s = new Shape();
+      const c = new Circle(1, "red");
+
+      function Square(size) {
+        this.size = size;
+      }
+
+      //Intermediate function inhearitance
+      function extend(Child, Parent) {
+        Child.prototype = Object.create(Parent.prototype);
+        Child.prototype.constructor = Child;
+      }
+
+      extend(Circle, Shape);
+      extend(Square, Shape);
+
+      //Method Overriding
+      //If you need to override a specific method of one of the Children
+      Circle.prototype.duplicate = function () {
+        Shape.prototype.duplicate.call(this);
+        console.log("duplicate circle");
+      };
+
+      function Square() {}
+      Square.prototype.duplicate = function () {
+        console.log("duplicate square");
+      };
+
+      //Polymorphism
+      const shapes = [new Circle(), new Square()];
+
+      for (let shape of shapes) {
+        shape.duplicate();
+      }
+
+      //Don't go over 1 level of inhearetance hierarchy
+
+      const canEat = {
+        eat: function () {
+          this.hunger--;
+          console.log("eating");
+        },
+      };
+
+      const canWalk = {
+        walk: function () {
+          console.log("walking");
+        },
+      };
+
+      //Mixins AKA Compisitions
+      function Person() {}
+
+      function mixin(target, ...sources) {
+        Object.assign(target, ...sources);
+      }
+      mixin(Person.prototype, canEat, canWalk);
+
+      const person = new Person();
+      console.log(person);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Count Occurences</h1>
+    <script>
+      function occurences(array, match) {
+        return array.reduce((accumulator, currentValue) => {
+          if (currentValue === match) {
+            accumulator++;
+          }
+          return accumulator;
+        }, 0);
+      }
+      function occurences2(array, match) {
+        return array.reduce((accumulator, currentValue) => {
+          const occurence = currentValue === match ? 1 : 0;
+          return accumulator + occurence;
+        }, 0);
+      }
+
+      const list = [1, 1, 1, 1, 3, 4, 5, 5, 5, 8, 9];
+      console.time("Mosh solution");
+      console.log(occurences2(list, 5));
+      console.timeEnd("Mosh solution");
+
+      console.time("My solution");
+      console.log(occurences(list, 5));
+      console.timeEnd("My solution");
+      console.log("My solution seems to work faster 9/10 times");
+    </script>
+  </body>
+</html>

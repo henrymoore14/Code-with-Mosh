@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const address = {
+        street: "123 Alvarado",
+        city: "Davis",
+        zipCode: 12345,
+        // showAddress() {
+        //   for (var i in address) {
+        //     console.log(i);
+        //     console.log(this[i]);
+        //   }
+        // },
+      };
+
+      function showAddress(address) {
+        const map = new Map(Object.entries(address));
+        console.log(map);
+      }
+
+      function showAddress2(address) {
+        for (let key in address) console.log(key, ":", address[key]);
+      }
+
+      showAddress(address);
+      showAddress2(address);
+    </script>
+  </body>
+</html>

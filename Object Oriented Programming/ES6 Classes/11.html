@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const privateProps = new WeakMap();
+
+      class Stack {
+        constructor() {
+          privateProps.set(this, {
+            stack: [],
+          });
+        }
+
+        push(element) {
+          privateProps.get(this).stack.push(element);
+        }
+
+        get pop() {
+          if (privateProps.get(this).stack.length === 0) {
+            throw new Error("The stack is empty");
+          }
+          privateProps.get(this).stack.pop();
+        }
+
+        get count() {
+          return privateProps.get(this).stack.length;
+        }
+
+        get peak() {
+          if (privateProps.get(this).stack.length === 0) {
+            throw new Error("The stack is empty");
+          }
+          return privateProps.get(this).stack[
+            privateProps.get(this).stack.length - 1
+          ];
+        }
+      }
+
+      const stack = new Stack();
+    </script>
+  </body>
+</html>
