@@ -1,0 +1,19 @@
+body {
+  padding: 15vh 30vw;
+  font-family: Arial;
+  text-align: center;
+}
+
+.header {
+  display: block;
+  background-image: url("./images/insightful.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+}
+
+.formRow {
+  padding-bottom: 30px;
+}
